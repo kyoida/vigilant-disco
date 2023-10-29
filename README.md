@@ -1,5 +1,5 @@
 # vigilant-disco
-Exploring Flask (Python Framework)
+Exploring Flask (Python Framework) and FastAPI for performing CRUD (Create, Read, Update, Delete) operations on data
 
 
 ### Objectives 
