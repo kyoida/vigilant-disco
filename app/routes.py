@@ -6,7 +6,7 @@ from app.models import User, Work
 def index():
     users = User.query.all()
     works = Work.query.all()
-    return render_template('user.html', users=users, works=works)
+    return render_template('index.html', users=users, works=works)
 
 @app.route('/works/<int:user_id>')
 def user_works(user_id):
