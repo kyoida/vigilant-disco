@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}
+{% block header %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
+{% endblock %}
+{% block title %}
+Log in
 {% endblock %}
 
 {% block main-body %}
@@ -19,7 +23,7 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">I agree with Terms of Policy</label>
   </div>
-  <button type="login" class="btn btn-primary">Log in</button>
+  <button type="submit" class="btn btn-primary">Log in</button>
 </form>
 
 {% endblock %}
