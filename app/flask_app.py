@@ -1,14 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
-db = SQLAlchemy()
-
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///C:\Users\anels\OneDrive\Рабочий стол\python\ass3\vigilant-disco\app\user.db'
 
+db = SQLAlchemy(app)
 
+app.config['SECRET_KEY'] = "why do I need it"
+
+# Create an application context
 with app.app_context():
-    db.init_app(app)
-
-app.config['SECRET_KEY'] = "why do i need it"
-db.init_app(app)
+    # Now you can perform database operations within the context
+    db.create_all()

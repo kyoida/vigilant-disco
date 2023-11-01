@@ -4,7 +4,7 @@ from datetime import datetime
 class User(db.Model):
     __tablename__= 'users'
     id = db.Column(db.Integer, primary_key=True)
-    login = db.Clolumn(db.String(100), unique=True, nullable=False)
+    login = db.Column(db.String(100), unique=True, nullable=False)
     name = db.Column(db.String(100), nullable=False)
 
     user_works = db.relationship("Work", back_populates="owner", cascade="all, delete-orphan")
