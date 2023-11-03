@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, session
-from database.models import User, Work  # Assuming you've renamed Works to Work
+from database.models import User, Work
 from flask_app import db, app
 from database.crud import add_user, add_work, delete_work, get_all_works, get_all_users
 
@@ -38,12 +38,10 @@ def register():
 def login():
     if request.method == 'POST':
         login = request.form['login']
-        # Here you should check the user's password as well, which is not implemented in your current model
         user = User.query.filter_by(login=login).first()
         if user:
-            # Log the user in by setting the user_id in the session
             session['user_id'] = user.id
-            return redirect(url_for('index'))  # Redirect to the homepage or dashboard
+            return redirect(url_for('index'))
         else:
             error = 'Invalid username'
             return render_template('login.html', error=error)
@@ -79,10 +77,8 @@ def create_work():
         work_title = request.form['work_title']
         work_text = request.form['work_text']
 
-        # You need to retrieve the user from the session
         user_id = session.get('user_id')
         if not user_id:
-            # Redirect to login if no user is logged in
             return redirect(url_for('login'))
 
         new_work = Work(work_title=work_title, work_text=work_text, work_owner=user_id)
@@ -92,12 +88,10 @@ def create_work():
     return render_template('create_work.html')
 
 
-# Delete work route
 @app.route('/delete-work/<int:work_id>')
 def delete_work_route(work_id):
     work = Work.query.get_or_404(work_id)
     if session.get('user_id') != work.work_owner:
-        # Handle case where the logged-in user is not the owner of the work
         return "Unauthorized", 403
 
     delete_work(work)
