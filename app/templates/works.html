@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+All Works
+{% endblock %}
+
+{% block body %}
+<h1>All Works</h1>
+{% if works %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Content</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for work in works %}
+            <tr>
+                <td>{{ work.title }}</td>
+                <td>{{ work.user.name }}</td>
+                <td>{{ work.text }}</td>
+                <td>{{ work.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No works have been created yet.</p>
+{% endif %}
+{% endblock %}

@@ -1,11 +1,33 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block content %}
-<h1>Users</h1>
-<ul>
-    {% for task in tasks %}
-    <li>{{ task.content }}</li>
+{% block header %}
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+User Profile
+{% endblock %}
+
+{% block main-body %}
+<h2>User Profile</h2>
+<div class="user-info">
+  <p><strong>Username:</strong> {{ user.login }}</p>
+  <p><strong>Name:</strong> {{ user.name }}</p>
+</div>
+
+<h3>My Works</h3>
+{% if works %}
+  <ul>
+    {% for work in works %}
+      <li>
+        <strong>{{ work.work_title }}</strong>
+        <p>{{ work.work_text }}</p>
+        <p>Created on: {{ work.work_date }}</p>
+      </li>
     {% endfor %}
-</ul>
-<!-- Add more task-related content here, like a form to add tasks -->
+  </ul>
+{% else %}
+  <p>No works found.</p>
+{% endif %}
+</div>
 {% endblock %}
