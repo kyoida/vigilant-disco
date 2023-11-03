@@ -3,8 +3,8 @@ Exploring Flask (Python Framework) and FastAPI for performing CRUD (Create, Read
 
 
 ### Objectives 
-This project aims to explore the Flask And FastAPI framworks of Python
-In The project used the database PosrgreSQL and SQLAlchemy
+This project aims to explore the Flask framworks of Python
+In The project used the database SQLite and SQLAlchemy
 
 ### Instructions
 1. Clone(or download)
